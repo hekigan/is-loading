@@ -1,4 +1,5 @@
 /**
+* Loading plugin for jQuery
 * 
 * Small helper to give the user a visual feedback that something is happening 
 * when fetching/posting data
@@ -10,7 +11,9 @@
 * - remove the loading element:         $( selector ).isLoading( "hide" );
 *
 * @author Laurent Blanes <laurent.blanes@gmail.com>
-* 
+* ---
+* Copyright 2013, Laurent Blanes ( https://github.com/hekigan/is-loading )
+* Released under the MIT, BSD, and GPL Licenses.
 */
 ;(function ( $, window, document, undefined ) {
 
