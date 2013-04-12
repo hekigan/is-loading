@@ -55,14 +55,11 @@
     Plugin.prototype = {
         
         init: function() {
-            // DOM element and the options via the instance, e.g. this.element and this.options
-            // function call example: this.yourOtherFunction(this.element, this.options).
             
-            var elt = this;
             if( $( this.element ).is( "body") ) {
                 this.options.position = "overlay";
             }
-            elt.show();
+            this.show();
         },
 
         show: function() {
@@ -154,8 +151,7 @@
         }
     };
     
-    // A really lightweight plugin wrapper around the constructor,
-    // preventing against multiple instantiations
+    // Constructor
     $.fn[pluginName] = function ( options ) {
         return this.each(function () {
             if ( !$.data( this, "plugin_" + pluginName ) ) {
@@ -163,11 +159,8 @@
             } else {
                 var elt = $.data( this, "plugin_" + pluginName );
 
-                if( "hide" === options ) {
-                    elt.hide();
-                } else {
-                    elt.show();
-                }
+                if( "hide" === options )    { elt.hide(); }
+                else                        { elt.show(); }
             }
         });
     };
