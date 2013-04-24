@@ -5,7 +5,8 @@
     "keywords": [
         "loader",
         "loading",
-        "overlay"
+        "overlay",
+        "ui"
     ],
     "version": "1.0.1",
     "author": {
