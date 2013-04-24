@@ -1,0 +1,32 @@
+{
+    "name": "isloading",
+    "title": "jQuery Is Loading",
+    "description": "Easy jQuery plugin to show visual feedback when loading data or any action that would take time",
+    "keywords": [
+        "loader",
+        "loading",
+        "overlay"
+    ],
+    "version": "1.0",
+    "author": {
+        "name": "Laurent Blanes"
+    },
+    "maintainers": [
+        {
+            "name": "Laurent Blanes",
+            "email": "laurent.blanes@gmail.com"
+        }
+    ],
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://github.com/hekigan/is-loading/MIT-LICENSE.txt"
+        }
+    ],
+    "homepage": "https://github.com/hekigan/is-loading/",
+    "docs": "http://hekigan.github.io/is-loading/",
+    "download": "https://github.com/hekigan/is-loading/",
+    "dependencies": {
+        "jquery": ">=1.7"
+    }
+}
