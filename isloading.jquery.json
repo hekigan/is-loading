@@ -1,7 +1,7 @@
 {
     "name": "isloading",
-    "title": "jQuery Is Loading",
-    "description": "Easy jQuery plugin to show visual feedback when loading data or any action that would take time",
+    "title": "Is Loading - Show feedback to your visitors",
+    "description": "Easy jQuery plugin to show visual feedback when loading data or any action that would take time. Also can disable form elements and put an overlay an specified area or whole page.",
     "keywords": [
         "loader",
         "loading",
