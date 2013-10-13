@@ -93,7 +93,14 @@
                         $( "body" ).prepend( '<div class="isloading-overlay" style="position:fixed; left:0; top:0; z-index: 10000; background: rgba(0,0,0,0.5); width: 100%; height: ' + $( this.element ).outerHeight() + 'px;" />' );
                     }
                     else {
-                        var pos = $( this.element ).position();
+                        var cssPosition = $( this.element ).css('position');
+                        var pos = null;
+                        
+                        if( 'relative' === cssPosition ) {
+                            pos = { 'top': 0,  'left': 0 };
+                        } else {
+                            pos = $( this.element ).position();
+                        }
                         $( this.element ).prepend( '<div class="isloading-overlay" style="position:absolute; top: ' + pos.top + 'px; left: ' + pos.left + 'px; z-index: 10000; background: rgba(0,0,0,0.5); width: ' + $( this.element ).outerWidth() + 'px; height: ' + $( this.element ).outerHeight() + 'px;" />' );
                     }
 
