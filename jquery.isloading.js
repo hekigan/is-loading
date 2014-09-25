@@ -140,7 +140,7 @@
 
             if( "overlay" === this.options.position ) {
 
-                $( ".isloading-overlay" ).remove();
+                $( this.element ).find( ".isloading-overlay" ).remove();
 
             } else {
 
