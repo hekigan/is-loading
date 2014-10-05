@@ -117,7 +117,7 @@
                         var cssPosition = $( this.element ).css('position');
                         var pos = null;
                         
-                        if( 'relative' === cssPosition ) {
+                        if( 'relative' === cssPosition || 'absolute' === cssPosition ) {
                             pos = { 'top': 0,  'left': 0 };
                         } else {
                             pos = $( this.element ).position();
