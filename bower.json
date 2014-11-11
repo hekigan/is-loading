@@ -1,0 +1,17 @@
+{
+  "name": "is-loading",
+  "version": "1.0.4",
+  "homepage": "http://hekigan.github.io/is-loading/",
+  "authors": [
+    "hekigan"
+  ],
+  "description": "Simple jQuery plugin to show visual feedback when loading data or any action that would take time",
+  "main": "jquery.isloading.js",
+  "keywords": [
+    "loading"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "jquery": ">1.7.0"
+  },
+}
