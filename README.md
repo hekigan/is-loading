@@ -3,7 +3,7 @@ is-loading
 
 Simple jQuery plugin to show visual feedback when loading data or any action that would take time
 
-Full documentation and examples [here](http://hekigan.github.io/is-loading/ "Documentation and examples")
+[Full documentation and examples here](http://hekigan.github.io/is-loading/ "Documentation and examples")
 
 __Quick start__
 

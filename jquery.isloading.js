@@ -1,5 +1,6 @@
 /**
 * Loading plugin for jQuery
+* version: v1.0.5
 * 
 * Small helper to give the user a visual feedback that something is happening 
 * when fetching/posting data
@@ -85,62 +86,79 @@
 
         show: function() {
 
-            var tpl = this.options.tpl.replace( '%wrapper%', ' isloading-show ' + ' isloading-' + this.options.position );
-            tpl = tpl.replace( '%class%', this.options['class'] );
-            tpl = tpl.replace( '%text%', ( this.options.text !== "" ) ? this.options.text + ' ' : '' );
-            this._loader = $( tpl );
+            var self = this,
+                tpl = self.options.tpl.replace( '%wrapper%', ' isloading-show ' + ' isloading-' + self.options.position );
+            tpl = tpl.replace( '%class%', self.options['class'] );
+            tpl = tpl.replace( '%text%', ( self.options.text !== "" ) ? self.options.text + ' ' : '' );
+            self._loader = $( tpl );
             
             // Disable the element
-            if( $( this.element ).is( "input, textarea" ) && true === this.options.disableSource ) {
+            if( $( self.element ).is( "input, textarea" ) && true === self.options.disableSource ) {
 
-                $( this.element ).attr( "disabled", "disabled" );
+                $( self.element ).attr( "disabled", "disabled" );
 
             }
-            else if( true === this.options.disableSource ) {
+            else if( true === self.options.disableSource ) {
 
-                $( this.element ).addClass( "disabled" );
+                $( self.element ).addClass( "disabled" );
 
             }
 
             // Set position
-            switch( this.options.position ) {
+            switch( self.options.position ) {
 
                 case "inside":
-                    $( this.element ).html( this._loader );
+                    $( self.element ).html( self._loader );
                     break;
 
                 case "overlay":
-                    if( $( this.element ).is( "body") ) {
-                        $( "body" ).prepend( '<div class="isloading-overlay" style="position:fixed; left:0; top:0; z-index: 10000; background: rgba(0,0,0,0.5); width: 100%; height: ' + $( this.element ).outerHeight() + 'px;" />' );
-                    }
-                    else {
-                        var cssPosition = $( this.element ).css('position');
-                        var pos = null;
-                        
+                    var $wrapperTpl = null;
+
+                    if( $( self.element ).is( "body") ) {
+                        $wrapperTpl = $('<div class="isloading-overlay" style="position:fixed; left:0; top:0; z-index: 10000; background: rgba(0,0,0,0.5); width: 100%; height: ' + $(window).height() + 'px;" />');
+                        $( "body" ).prepend( $wrapperTpl );
+
+                        $( window ).on('resize', function() {
+                            $wrapperTpl.height( $(window).height() + 'px' );
+                            self._loader.css({top: ($(window).height()/2 - self._loader.outerHeight()/2) + 'px' });
+                        });
+                    } else {
+                        var cssPosition = $( self.element ).css('position'),
+                            pos = {},
+                            height = $( self.element ).outerHeight() + 'px',
+                            width = '100%'; // $( self.element ).outerWidth() + 'px;
+
                         if( 'relative' === cssPosition || 'absolute' === cssPosition ) {
                             pos = { 'top': 0,  'left': 0 };
                         } else {
-                            pos = $( this.element ).position();
+                            pos = $( self.element ).position();
                         }
-                        $( this.element ).prepend( '<div class="isloading-overlay" style="position:absolute; top: ' + pos.top + 'px; left: ' + pos.left + 'px; z-index: 10000; background: rgba(0,0,0,0.5); width: ' + $( this.element ).outerWidth() + 'px; height: ' + $( this.element ).outerHeight() + 'px;" />' );
+                        $wrapperTpl = $('<div class="isloading-overlay" style="position:absolute; top: ' + pos.top + 'px; left: ' + pos.left + 'px; z-index: 10000; background: rgba(0,0,0,0.5); width: ' + width + '; height: ' + height + ';" />');
+                        $( self.element ).prepend( $wrapperTpl );
+
+                        $( window ).on('resize', function() {
+                            $wrapperTpl.height( $( self.element ).outerHeight() + 'px' );
+                            self._loader.css({top: ($wrapperTpl.outerHeight()/2 - self._loader.outerHeight()/2) + 'px' });
+                        });
                     }
 
-                    $( ".isloading-overlay" ).html( this._loader );
+                    $wrapperTpl.html( self._loader );
+                    self._loader.css({top: ($wrapperTpl.outerHeight()/2 - self._loader.outerHeight()/2) + 'px' });
                     break;
 
                 default:
-                    $( this.element ).after( this._loader );
+                    $( self.element ).after( self._loader );
                     break;
             }
 
-            this.disableOthers();
+            self.disableOthers();
         },
 
         hide: function() {
 
             if( "overlay" === this.options.position ) {
 
-                $( this.element ).find( ".isloading-overlay" ).remove();
+                $( this.element ).find( ".isloading-overlay" ).first().remove();
 
             } else {
 
