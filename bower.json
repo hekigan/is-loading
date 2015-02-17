@@ -2,7 +2,8 @@
   "name": "is-loading",
   "version": "1.0.5",
   "homepage": "http://hekigan.github.io/is-loading/",
-  "authors": [
+  "repository": "https://github.com/hekigan/is-loading/",
+  "author": [
     "Laurent Blanes"
   ],
   "description": "Simple jQuery plugin to show visual feedback when loading data or any action that would take time",
