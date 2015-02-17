@@ -5,6 +5,23 @@ Simple jQuery plugin to show visual feedback when loading data or any action tha
 
 [Full documentation and examples here](http://hekigan.github.io/is-loading/ "Documentation and examples")
 
+__Installation__
+
+3 options:
+
+**raw**
+
+https://github.com/hekigan/is-loading/blob/master/jquery.isloading.min.js
+
+**zip**
+
+https://github.com/hekigan/is-loading/archive/master.zip
+
+**use Bower**
+```bash
+bower install is-loading
+```
+
 __Quick start__
 
 Basic use:
