@@ -44,9 +44,9 @@
         defaults = {
             'position': "right",        // right | inside | overlay
             'text': "",                 // Text to display next to the loader
-            'class': "icon-refresh",    // loader CSS class
+            'class': "glyphicon glyphicon-refresh",    // loader CSS class
             'transparency': 0.5,        // background transparency for using with overlay
-            'tpl': '<span class="isloading-wrapper %wrapper%">%text%<i class="%class% icon-spin"></i></span>',    // loader base Tag
+            'tpl': '<span class="isloading-wrapper %wrapper%">%text%<i class="%class% glyphicon-spin"></i></span>',    // loader base Tag. Change to support bootstrap > 3.x
             'disableSource': true,      // true | false
             'disableOthers': []
         };
@@ -116,7 +116,7 @@
                     var $wrapperTpl = null;
 
                     if( $( self.element ).is( "body") ) {
-                        $wrapperTpl = $('<div class="isloading-overlay" style="position:fixed; left:0; top:0; z-index: 10000; background: rgba(0,0,0,' + this.options.transparency + '); width: 100%; height: ' + $(window).height() + 'px;" />');
+                        $wrapperTpl = $('<div class="isloading-overlay" style="position:fixed; left:0; top:0; z-index: 10000; background: rgba(0,0,0,' + self.options.transparency + '); width: 100%; height: ' + $(window).height() + 'px;" />');
                         $( "body" ).prepend( $wrapperTpl );
 
                         $( window ).on('resize', function() {
@@ -134,7 +134,7 @@
                         } else {
                             pos = $( self.element ).position();
                         }
-                        $wrapperTpl = $('<div class="isloading-overlay" style="position:absolute; top: ' + pos.top + 'px; left: ' + pos.left + 'px; z-index: 10000; background: rgba(0,0,0,0.5); width: ' + width + '; height: ' + height + ';" />');
+                        $wrapperTpl = $('<div class="isloading-overlay" style="position:absolute; top: ' + pos.top + 'px; left: ' + pos.left + 'px; z-index: 10000; background: rgba(0,0,0,' + self.options.transparency + '); width: ' + width + '; height: ' + height + ';" />');
                         $( self.element ).prepend( $wrapperTpl );
 
                         $( window ).on('resize', function() {
