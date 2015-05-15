@@ -127,9 +127,9 @@
                         var cssPosition = $( self.element ).css('position'),
                             pos = {},
                             height = $( self.element ).outerHeight() + 'px',
-                            width = '100%'; // $( self.element ).outerWidth() + 'px;
+                            width = $(self.element).css("width"); // $( self.element ).outerWidth() + 'px;
 
-                        if( 'relative' === cssPosition || 'absolute' === cssPosition ) {
+                        if( 'relative' === cssPosition || 'absolute' === cssPosition) {
                             pos = { 'top': 0,  'left': 0 };
                         } else {
                             pos = $( self.element ).position();
