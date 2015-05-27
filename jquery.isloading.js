@@ -47,7 +47,8 @@
             'class': "icon-refresh",    // loader CSS class
             'tpl': '<span class="isloading-wrapper %wrapper%">%text%<i class="%class% icon-spin"></i></span>',    // loader base Tag
             'disableSource': true,      // true | false
-            'disableOthers': []
+            'disableOthers': [],
+            'onClickWrapper': undefined
         };
 
     // The actual plugin constructor
@@ -91,6 +92,10 @@
             tpl = tpl.replace( '%class%', self.options['class'] );
             tpl = tpl.replace( '%text%', ( self.options.text !== "" ) ? self.options.text + ' ' : '' );
             self._loader = $( tpl );
+            if(self.options.onClickWrapper !== undefined) {
+                self._loader.css('cursor','pointer');
+                self._loader.click(self.options.onClickWrapper);
+            }
             
             // Disable the element
             if( $( self.element ).is( "input, textarea" ) && true === self.options.disableSource ) {
