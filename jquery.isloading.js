@@ -48,7 +48,8 @@
             'tpl': '<span class="isloading-wrapper %wrapper%">%text%<i class="%class% icon-spin"></i></span>',    // loader base Tag
             'disableSource': true,      // true | false
             'disableOthers': [],
-            'onClickWrapper': undefined
+            'onClickLoader': undefined,
+            'onClickOverLap': undefined
         };
 
     // The actual plugin constructor
@@ -92,9 +93,12 @@
             tpl = tpl.replace( '%class%', self.options['class'] );
             tpl = tpl.replace( '%text%', ( self.options.text !== "" ) ? self.options.text + ' ' : '' );
             self._loader = $( tpl );
-            if(self.options.onClickWrapper !== undefined) {
+            if(self.options.onClickLoader !== undefined) {
                 self._loader.css('cursor','pointer');
-                self._loader.click(self.options.onClickWrapper);
+                self._loader.click(function(e) {
+                    self.options.onClickLoader.call(self.element);
+                    e.stopPropagation();
+                });
             }
             
             // Disable the element
@@ -147,6 +151,11 @@
                         });
                     }
 
+                    if(self.options.onClickOverLap !== undefined) {
+                        $wrapperTpl.click(function() {
+                            self.options.onClickOverLap.call(self.element);
+                        });
+                    }
                     $wrapperTpl.html( self._loader );
                     self._loader.css({top: ($wrapperTpl.outerHeight()/2 - self._loader.outerHeight()/2) + 'px' });
                     break;
