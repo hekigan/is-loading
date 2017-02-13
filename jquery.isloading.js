@@ -1,6 +1,6 @@
+/*! isLoading v1.0.6 | https://github.com/hekigan/is-loading | (c) 2013, 2015 Laurent Blanes <laurent.blanes@gmail.com> | The MIT License (MIT) */
 /**
-* Loading plugin for jQuery
-* version: v1.0.5
+* Loading visual helper plugin for jQuery
 * 
 * Small helper to give the user a visual feedback that something is happening 
 * when fetching/posting data
@@ -11,9 +11,7 @@
 * - On non-form elements:               $("div").isLoading({ text: "Loading", position:'inside'});
 * - remove the loading element:         $( selector ).isLoading( "hide" );
 *
-* @author Laurent Blanes <laurent.blanes@gmail.com>
 * ---
-* Copyright 2013, Laurent Blanes ( https://github.com/hekigan/is-loading )
 * 
 * The MIT License (MIT)
 * 

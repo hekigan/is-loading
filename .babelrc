@@ -1,0 +1,26 @@
+{
+  
+  "env": {
+    "test": {
+      "presets": [
+        ["es2015", {"loose": true}]
+      ],
+      "plugins": [
+        ["add-module-exports"]
+      ]
+    },
+    "cjs": {
+      "presets": [
+        ["es2015", {"loose": true}]
+      ],
+      "plugins": [
+        ["add-module-exports"]
+      ]
+    },
+    "es": {
+      "presets": [
+        ["es2015", {"loose": true, "modules": false}]
+      ]
+    }
+  }
+}
