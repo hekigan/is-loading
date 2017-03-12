@@ -1,0 +1,67 @@
+$is-loading-overlay-bg: rgba(#000, .5);
+$is-loading-overlay-text-color: #444;
+$is-loading-overlay-wrapper-bg: #FFF;
+$is-loading-overlay-animation-color: #0BB;
+
+.is-loading-text-wrapper {
+	background: $is-loading-overlay-wrapper-bg;
+	border-radius: 2px;
+	color: $is-loading-overlay-text-color;
+	display: inline-block;
+	padding: 10px 20px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+
+	&:after {
+		animation-name: is-loading-anim;
+		animation-duration: 1s;
+		animation-iteration-count: infinite;
+		animation-direction: alternate;
+		content: '';
+		display: inline-block;
+		background: $is-loading-overlay-animation-color;
+		height: 2px;
+		position: absolute;
+		left: 50%;
+		bottom: 1px;
+		transform: translate(-50%, 0%);
+		vertical-align: middle;
+		width: 1px;
+		z-index: 2;
+	}
+}
+
+#is-loading-full-overlay,
+.is-loading-element-overlay {
+	background: $is-loading-overlay-bg;
+	position: relative;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 99999;
+}
+
+#is-loading-full-overlay {
+	position: fixed;
+}
+
+.is-loading-element-overlay {
+	position: absolute;
+}
+
+.is-loading-element-overlay-target {
+	position: relative;
+
+	.is-loading-text-wrapper {
+		padding-bottom: 4px;
+		padding-top: 0px;
+	}
+}
+
+@keyframes is-loading-anim {
+	0% { width: 1px; }
+	100% { width: 98%; }
+}

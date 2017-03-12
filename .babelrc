@@ -1,0 +1,32 @@
+{
+  "presets": [
+    ["es2015", {"modules": false}],
+    "stage-2"
+  ],
+  "env": {
+    "test": {
+      "presets": [
+        ["es2015", {"loose": true}],
+        "stage-2"
+      ],
+      "plugins": [
+        ["add-module-exports", "transform-object-rest-spread"]
+      ]
+    },
+    "cjs": {
+      "presets": [
+        ["es2015", {"loose": true}],
+        "stage-2"
+      ],
+      "plugins": [
+        ["add-module-exports", "transform-object-rest-spread"]
+      ]
+    },
+    "es": {
+      "presets": [
+        ["es2015", {"loose": true, "modules": false}],
+        "stage-2"
+      ]
+    }
+  }
+}
