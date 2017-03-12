@@ -21,10 +21,22 @@ const plugins = [
 const isProd = process.env.NODE_ENV === `production`;
 if (isProd) plugins.push(uglify());
 
-export default {
+const isExample = process.env.NODE_ENV === `example`;
+
+let config = {
   entry: `src/index.js`,
   plugins,
   dest: `dist/${name}${isProd ? `.min` : ``}.js`,
   moduleName: name,
   format: `umd`
 };
+
+if (isExample) {
+  Object.assign(config, {
+    entry: `example/sample.js`,
+    dest: `example/sample.bundle.js`,
+    plugins
+  });
+}
+
+export default config;
