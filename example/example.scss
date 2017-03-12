@@ -1,0 +1,269 @@
+@import '../src/css/index';
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #fefefe;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    margin-bottom: 40px;
+}
+
+code {
+    background: #f9f9f9;
+    border: 1px solid #CFCFCF;
+    border-radius: 3px;
+    display: inline-block;
+    font-family: courier;
+    font-size: .9em;
+    margin: 0;
+    padding: 2px 10px;
+}
+
+.syntax.javascript {
+    margin: 0;
+    max-width: 100%;
+    overflow: auto;
+
+    code {
+        display: none;
+        padding-bottom: 20px;
+        white-space: pre;
+    }
+}
+
+.tabSelected {
+    box-shadow: 0px 0 6px #000;
+    z-index: 3;
+
+    a {
+        background: #78909C;
+    }
+}
+
+.es6 {
+    .tabs li:nth-child(1) {
+        @extend .tabSelected;
+    }
+    .syntax.javascript code:nth-child(1) {
+        display: block;
+    }
+}
+
+.es5 {
+    .tabs li:nth-child(2) {
+        @extend .tabSelected;
+    }
+    .syntax.javascript code:nth-child(2) {
+        display: block;
+    }
+}
+
+.jquery {
+    .tabs li:nth-child(3) {
+        @extend .tabSelected;
+    }
+    .syntax.javascript code:nth-child(3) {
+        display: block;
+    }
+}
+
+h3 {
+    color: #0D47A1;
+    font-size: 28px;
+    margin: 40px 0 20px 0;
+}
+
+a {
+    color: #0088cc;
+}
+
+.header {
+    background: #607D8B;
+    box-shadow: 0 2px 6px #555;
+    color: #eee;
+    padding: 10px 0 1px 0;
+    position: relative;
+    z-index: 3;
+
+    h1 {
+        font-size: 2.4em;
+        margin: 0;
+    }
+
+    h3,
+    a {
+        color: #CCC;
+    }
+
+    h3 {
+        background: none;
+        margin: 2px 0 20px 0;
+        padding: 0;
+    }
+
+    a:hover {
+        color: #fff;
+    }
+}
+
+.top-menu {
+    background: #777;
+    padding: 10px 20px;
+
+    .nav-header {
+        color: #333;
+        font-weight: bold;
+        text-shadow: 1px 1px 1px #999;
+    }
+
+    ul,
+    li {
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        display: inline-block;
+        list-style: none;
+        margin-right: 20px;
+    }
+
+    a {
+        color: #ddd;
+        text-decoration: none;
+
+        &:hover {
+            color: #fff;
+        }
+    }
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 900px;
+    padding: 0 20px;
+}
+
+.form {
+    background: #f5f5f5;
+    padding: 10px 20px;
+
+    h4 {
+        color: #444;
+        margin: 10px 0 20px 0;
+    }
+
+    p {
+        margin: 10px 0;
+    }
+
+    input[type=text],
+    input[type=password] {
+        border: 1px solid #aaa;
+        border-radius: 3px;
+        box-shadow: inset 1px 1px 4px rgba(#000, 0.3);
+        font-size: 14px;
+        line-height: 2em;
+        padding: 2px 10px;
+
+        &[disabled],
+        &.disabled {
+            background: #e0e0e0;
+            color: #666;
+        }
+    }
+}
+
+.btn {
+    transition: box-shadow .2s;
+    background: #2196F3;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1em;
+    padding: 6px 15px;
+
+    &:hover {
+        box-shadow: 0px 2px 3px 0px #444;
+    }
+
+    &.disabled {
+        background: #d4d4d4;
+        box-shadow: none;
+        color: #777;
+        cursor: default;
+        text-shadow: 1px 1px 1px #ddd;
+    }
+}
+
+.tabs {
+    display: inline-block;
+    margin: 20px 0 0 0;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    top: 4px;
+
+    li {
+        display: inline-block;
+        list-style: none;
+        position: relative;
+
+        & + li {
+            margin-left: -4px;
+        }
+
+        a {
+            transition: background .2s;
+            background: #455A64;
+            color: #FFF;
+            display: inline-block;
+            padding: 8px 20px;
+            text-decoration: none;
+
+            &:hover {
+                background: lighten(#455A64, 8%);
+            }
+        }
+    }
+}
+
+.example {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    margin-top: 0;
+
+    .es5 {
+        display: none;
+    }
+}
+
+.demo {
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 5px;
+
+    p {
+        margin-top: 0;
+    }
+}
+
+.alert {
+    background: #fcf8e3;
+    border: 1px solid #fbeed5;
+    border-radius: 4px;
+    color: #c09853;
+    padding: 10px 20px;
+}
+
+.alert-success {
+    background: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+}

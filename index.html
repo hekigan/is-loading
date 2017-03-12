@@ -1,0 +1,467 @@
+<!doctype html>
+<html>
+	<head>
+		<title>is-loading</title>
+        <meta charset="utf-8">
+        <meta lang="en">
+	</head>
+	<body>
+            
+        <div class="header">
+
+            <div class="container wrapper">
+                <h1>is-loading</h1>
+                <h3>Github: <a href="https://github.com/hekigan/is-loading">https://github.com/hekigan/is-loading</a></h3>
+            </div>
+
+        </div>
+            
+        <div class="top-menu">
+            <nav class="container wrapper">
+                <ul>
+                    <li class="nav-header">Examples</li>
+                    <li><a href="#basic">Basic</a></li>
+                    <li><a href="#disable-list">Disable DOM elements</a></li>
+                    <li><a href="#in-tag">In Tag</a></li>
+                    <li><a href="#overlay">Full Overlay</a></li>
+                    <li><a href="#overlay-tag">Element Overlay</a></li>
+                </ul>
+            </nav>
+        </div>
+
+		<div class="container wrapper" style="position: relative;">
+
+            <h3>Parameters:</h3>
+
+            <p>
+                By default all modes accept a DOM element as the first parameter, and the option object as the second.
+            </p>
+
+            <pre><code>
+isLoading(targetElement, options);
+            </code></pre>
+
+            <p>
+                Full overlay mode is an exception and only has the option as a parameter.
+            </p>
+
+            <pre><code>
+isLoading(options);
+            </code></pre>
+
+            <h3>Default options:</h3>
+
+            <pre><code>
+defaults = {
+    'type': 'switch',        // switch | replace | full-overlay | overlay
+    'text': 'loading',       // Text to display
+    'disableSource': true,   // true | false
+    'disableList': []        // Array of elements to set as 'disabled'
+};
+            </code></pre>
+
+
+<!-- BASIC -->
+            <div id="basic">
+                
+                <a name="basic"></a>
+
+                <h3>Basic Loading</h3>
+
+                <p>
+                    This is the most basic setup.
+                </p>
+                <p>
+                    It will set the target as disabled by default (either a CSS <code>.disabled</code> class or a <code>disabled</code> attribute in case of form button).
+                </p>
+
+                <div class="demo well">
+                    <p class="alert">container</p>
+                    <span class="btn">test</span>
+                </div>
+
+                <div class="code-sample">
+                    <ul class="tabs">
+                        <li><a href="">ES6/ES2015</a> </li>
+                        <li><a href="">ES5</a> </li>
+                        <li><a href="">jQuery</a> </li>
+                    </ul>
+                    <div class="example syntax javascript">
+<code>
+// ES6/ES2015
+import isLoading from 'is-loading';
+
+const button = document.querySelector('.btn');
+
+button.addEventListener('click', function(e) {
+    // start the loading script
+    isLoading(e.target).loading(); // or isLoading(button).loading()
+
+    setTimeout(function() {
+        // stop the loading script
+        isLoading(e.target).remove(); // or isLoading(button).remove()
+    }, 1000 );
+});
+</code>
+<code>
+// ES5
+var button = document.querySelector('.btn');
+
+button.addEventListener('click', function(e) {
+    // start the loading script
+    isLoading(e.target).loading(); // or isLoading(button).loading()
+
+    setTimeout(function() {
+        // stop the loading script
+        isLoading(e.target).remove(); // or isLoading(button).remove()
+    }, 1000 );
+});
+</code>
+<code>
+// jQuery
+var button = $('.btn')[0];
+
+button.addEventListener('click', function(e) {
+    // start the loading script
+    isLoading(e.target).loading(); // or isLoading(button).loading()
+
+    setTimeout(function() {
+        // stop the loading script
+        isLoading(e.target).remove(); // or isLoading(button).remove()
+    }, 1000 );
+});
+</code>
+                    </div>
+                </div>
+                
+            </div>
+<!--// BASIC -->
+
+<!-- BASIC -->
+            <div id="disable-list">
+                
+                <a name="disable-list"></a>
+
+                <h3>Disable DOM elements</h3>
+
+                <p>
+                    How to use to disable other DOM elements
+                </p>
+
+                <div class="demo well">
+                    <section class="form">
+                        <h4>Login</h4>
+                        <p>
+                            <input type="text" placeholder="username" id="username">
+                        </p>
+                        <p>
+                            <input type="password" placeholder="password" id="password">
+                        </p>
+                        <p>
+                            <input type="submit" value="login now!" class="btn">
+                        </p>
+                    </section>
+                </div>
+
+                <div class="code-sample">
+                    <ul class="tabs">
+                        <li><a href="">ES6/ES2015</a> </li>
+                        <li><a href="">ES5</a> </li>
+                        <li><a href="">jQuery</a> </li>
+                    </ul>
+                    <div class="example syntax javascript">
+<code>
+// ES6/ES2015
+import isLoading from 'is-loading';
+
+const $button = document.querySelector('input[type="submit"]');
+const $username = document.querySelector('#username');
+const $password = document.querySelector('#password');
+
+const options = {
+    'type': 'switch',        // switch | replace | full-overlay | overlay
+    'text': 'login...',      // Text to display in the loader
+    'disableSource': true,   // true | false
+    'disableList': [$username, $password]
+};
+
+$button.addEventListener('click', function(e) {
+    isLoading($button).loading(); // start the loading script
+
+    setTimeout(function() {
+        isLoading($button).remove(); // stop the loading script
+    }, 1000 );
+});
+</code>
+<code>
+// ES5
+var $button = document.querySelector('input[type="submit"]');
+var $username = document.querySelector('#username');
+var $password = document.querySelector('#password');
+
+const options = {
+    'type': 'switch',        // switch | replace | full-overlay | overlay
+    'text': 'login...',      // Text to display in the loader
+    'disableSource': true,   // true | false
+    'disableList': [$username, $password]
+};
+
+$button.addEventListener('click', function(e) {
+    isLoading($button).loading(); // start the loading script
+
+    setTimeout(function() {
+        isLoading($button).remove(); // stop the loading script
+    }, 1000 );
+});
+</code>
+<code>
+// jQuery
+var $button = $('input[type="submit"]')[0];
+var $username = $('#username')[0];
+var $password = $('#password')[0];
+
+const options = {
+    'type': 'switch',        // switch | replace | full-overlay | overlay
+    'text': 'login...',      // Text to display in the loader
+    'disableSource': true,   // true | false
+    'disableList': [$username, $password]
+};
+
+$button.addEventListener('click', function(e) {
+    isLoading($button).loading(); // start the loading script
+
+    setTimeout(function() {
+        isLoading($button).remove(); // stop the loading script
+    }, 1000 );
+});
+</code>
+                    </div>
+                </div>
+                
+            </div>
+<!--// BASIC -->
+
+<!-- LOAD IN DOM -->
+			<div id="load-in-div">
+                
+                <a name="in-tag"></a>
+
+				<h3>Load in Tag</h3>
+
+                <p>
+                    This demo shows how to show the loading message inside the target.
+                </p>
+
+				<div id="load1" class="demo well">
+					<p class="alert">container</p>
+                    <button class="btn">test</button>
+				</div>
+
+                <div class="code-sample">
+                    <ul class="tabs">
+                        <li><a href="">ES6/ES2015</a> </li>
+                        <li><a href="">ES5</a> </li>
+                        <li><a href="">jQuery</a> </li>
+                    </ul>
+                    <div class="example syntax javascript">
+<code>
+// ES6/ES2015
+import isLoading from 'is-loading';
+
+const button = document.querySelector('.btn');
+const targetElement = document.querySelector('.demo .alert');
+const load = isLoading(targetElement, {
+    type: 'target',
+    disableList: [button]
+});
+
+button.addEventListener('click', function(e) {
+    // start the loading script
+    load.loading();
+
+    setTimeout(function() {
+        // Deactivate the loading script
+        load.remove();
+    }, 1000 );
+});
+</code>
+<code>
+// ES5
+var button = document.querySelector('.btn');
+var targetElement = document.querySelector('.demo .alert');
+var load = isLoading(targetElement, {
+    type: 'target',
+    disableList: [button]
+});
+
+button.addEventListener('click', function(e) {
+    // start the loading script
+    load.loading();
+
+    setTimeout(function() {
+        // Deactivate the loading script
+        load.remove();
+    }, 1000 );
+});
+</code>
+<code>
+// jQuery
+var button = $('.btn')[0];
+var targetElement = $('.demo .alert')[0];
+var load = isLoading(targetElement, {
+    type: 'target',
+    disableList: [button]
+});
+
+button.addEventListener('click', function(e) {
+    // start the loading script
+    load.loading();
+
+    setTimeout(function() {
+        // Deactivate the loading script
+        load.remove();
+    }, 1000 );
+});
+</code>
+                    </div>
+                </div>
+				
+			</div>
+<!--// LOAD IN DOM -->
+
+<!-- OVERLAY -->
+            <div id="load-overlay">
+                
+                <a name="overlay"></a>
+
+                <h3>Overlay</h3>
+
+                <p>
+                    Cover the whole window with an overlay
+                </p>
+
+                <div class="demo well">
+                    <p class="alert">container</p>
+                    <span class="btn">test</span>
+                </div>
+
+                <div class="code-sample">
+                    <ul class="tabs">
+                        <li><a href="">ES6/ES2015</a> </li>
+                        <li><a href="">ES5</a> </li>
+                        <li><a href="">jQuery</a> </li>
+                    </ul>
+                    <div class="example syntax javascript">
+<code>
+// ES6/ES2015
+import isLoading from 'is-loading';
+
+// start the loading script
+isLoading().loading();
+
+// Deactivate the loading script
+isLoading().remove();
+</code>
+<code>
+// ES5
+// start the loading script
+isLoading().loading();
+
+// Deactivate the loading script
+isLoading().remove();
+</code>
+<code>
+// jQuery
+// start the loading script
+isLoading().loading();
+
+// Deactivate the loading script
+isLoading().remove();
+</code>
+                    </div>
+                </div>
+            </div>
+<!--// OVERLAY -->
+
+<!-- OVERLAY AN ELEMENT -->
+            <div id="load-overlay-elt">
+                
+                <a name="overlay-tag"></a>
+
+                <h3>Overlay on Tag</h3>
+
+                <p>
+                    Cover target element with an overlay.
+                </p>
+
+                <div class="demo well">
+                    <p class="alert">container</p>
+                    <span class="btn">test</span>
+                </div>
+
+                <div class="code-sample">
+                    <ul class="tabs">
+                        <li><a href="">ES6/ES2015</a> </li>
+                        <li><a href="">ES5</a> </li>
+                        <li><a href="">jQuery</a> </li>
+                    </ul>
+                    <div class="example syntax javascript">
+<code>
+// ES6/ES2015
+import isLoading from 'is-loading';
+
+const button = document.querySelector('.btn');
+const targetElement = document.querySelector('.demo .alert');
+const load = isLoading(targetElement, { type: 'overlay' });
+
+button.addEventListener('click', function(e) {
+    // start the loading script
+    load.loading();
+
+    setTimeout(function() {
+        // Deactivate the loading script
+        load.remove();
+    }, 2500 );
+});
+</code>
+<code>
+// ES5
+var button = document.querySelector('.btn');
+var targetElement = document.querySelector('.demo .alert');
+var load = isLoading(targetElement, { type: 'overlay' });
+
+button.addEventListener('click', function(e) {
+    // start the loading script
+    load.loading();
+
+    setTimeout(function() {
+        // Deactivate the loading script
+        load.remove();
+    }, 2500 );
+});
+</code>
+<code>
+// jQuery
+var button = $('.btn')[0];
+var targetElement = $('.demo .alert')[0];
+var load = isLoading(targetElement, { type: 'overlay' });
+
+button.addEventListener('click', function(e) {
+    // start the loading script
+    load.loading();
+
+    setTimeout(function() {
+        // Deactivate the loading script
+        load.remove();
+    }, 2500 );
+});
+</code>
+                    </div>
+                </div>
+            </div>
+<!--// OVERLAY AN ELEMENT -->
+
+		</div>
+        <script src="./example/sample.bundle.js"></script>
+	</body>
+</html>
