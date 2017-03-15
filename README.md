@@ -25,8 +25,6 @@ http://hekigan.github.io/is-loading/
 
 ### Installation
 
-### Attention: the *npm* repository is currently out of date. I do not have ownership of the repo at the moment and the matter is being discussed with the person who pushed version 1 of my script since I did not do it at the time. Hopefully the problem will be resolved soon.
-
 Install via [yarn](https://github.com/yarnpkg/yarn)
 
 	yarn add is-loading
