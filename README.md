@@ -144,8 +144,7 @@ isLoading($elt, options).remove();
 
 If you don't use a package manager, you can [access `is-loading` via unpkg (CDN)](https://unpkg.com/is-loading/), download the source, or point your package manager to the url.
 
-`is-loading` is compiled as a collection of [CommonJS](http://webpack.github.io/docs/commonjs.html) modules & [ES2015 modules](http://www.2ality.com/2014/0
-  -9/es6-modules-final.html) for bundlers that support the `jsnext:main` or `module` field in package.json (Rollup, Webpack 2)
+`is-loading` is compiled as a collection of [CommonJS](http://webpack.github.io/docs/commonjs.html) modules & [ES2015 modules](http://www.2ality.com/2014/09/es6-modules-final.html) for bundlers that support the `jsnext:main` or `module` field in package.json (Rollup, Webpack 2)
 
 The `is-loading` package includes precompiled production and development [UMD](https://github.com/umdjs/umd) builds in the [`dist` folder](https://unpkg.com/is-loading/dist/). They can be used directly without a bundler and are thus compatible with many popular JavaScript module loaders and environments. You can drop a UMD build as a [`<script>` tag](https://unpkg.com/is-loading) on your page. The UMD builds make `is-loading` available as a `window.isLoading` global variable.
 
