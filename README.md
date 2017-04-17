@@ -5,7 +5,7 @@
 [![Travis](https://img.shields.io/travis/hekigan/is-loading/master.svg?style=flat-square)](https://travis-ci.org/hekigan/is-loading)
 [![David](https://img.shields.io/david/hekigan/is-loading.svg?style=flat-square)](https://david-dm.org/hekigan/is-loading)
 [![Coverage Status](https://img.shields.io/coveralls/hekigan/is-loading.svg?style=flat-square)](https://coveralls.io/github/hekigan/is-loading)
-[![Downloads](https://img.shields.io/npm/dm/is-loading.svg)]
+![Downloads](https://img.shields.io/npm/dm/is-loading.svg)
 
 [![NPM](https://nodei.co/npm/is-loading.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/is-loading/)
 
