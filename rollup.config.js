@@ -9,7 +9,7 @@ const name = `isLoading`;
 const plugins = [
   babel(),
   nodeResolve({
-    module: true,
+    module: false,
     jsnext: true
   }),
   commonjs({
