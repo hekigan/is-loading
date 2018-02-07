@@ -57,9 +57,10 @@
         // Merge user options with default ones
         this.options = $.extend( {}, defaults, options );
 
-        this._defaults     = defaults;
-        this._name         = pluginName;
-        this._loader       = null;                // Contain the loading tag element
+        this._defaults       = defaults;
+        this._name           = pluginName;
+        this._loader         = null;                // Contain the loading tag element
+        this._resizeCallback = null;                // Callback attached to window to handle resize event for overlays
 
         this.init();
     }
@@ -118,10 +119,10 @@
                         $wrapperTpl = $('<div class="isloading-overlay" style="position:fixed; left:0; top:0; z-index: 10000; background: rgba(0,0,0,0.5); width: 100%; height: ' + $(window).height() + 'px;" />');
                         $( "body" ).prepend( $wrapperTpl );
 
-                        $( window ).on('resize', function() {
+                        self._resizeCallback = function() {
                             $wrapperTpl.height( $(window).height() + 'px' );
                             self._loader.css({top: ($(window).height()/2 - self._loader.outerHeight()/2) + 'px' });
-                        });
+                        };
                     } else {
                         var cssPosition = $( self.element ).css('position'),
                             pos = {},
@@ -136,11 +137,12 @@
                         $wrapperTpl = $('<div class="isloading-overlay" style="position:absolute; top: ' + pos.top + 'px; left: ' + pos.left + 'px; z-index: 10000; background: rgba(0,0,0,0.5); width: ' + width + '; height: ' + height + ';" />');
                         $( self.element ).prepend( $wrapperTpl );
 
-                        $( window ).on('resize', function() {
+                        self._resizeCallback = function() {
                             $wrapperTpl.height( $( self.element ).outerHeight() + 'px' );
                             self._loader.css({top: ($wrapperTpl.outerHeight()/2 - self._loader.outerHeight()/2) + 'px' });
-                        });
+                        };
                     }
+                    $( window ).on('resize', self._resizeCallback);
 
                     $wrapperTpl.html( self._loader );
                     self._loader.css({top: ($wrapperTpl.outerHeight()/2 - self._loader.outerHeight()/2) + 'px' });
@@ -159,6 +161,10 @@
             if( "overlay" === this.options.position ) {
 
                 $( this.element ).find( ".isloading-overlay" ).first().remove();
+                if (this._resizeCallback) {
+                    $( window ).off('resize', this._resizeCallback);
+                    this._resizeCallback = null;
+                }
 
             } else {
 
