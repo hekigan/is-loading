@@ -1,6 +1,6 @@
 /**
 * Loading plugin for jQuery
-* version: v1.0.6
+* version: v1.0.8
 * 
 * Small helper to give the user a visual feedback that something is happening 
 * when fetching/posting data
