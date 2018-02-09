@@ -150,7 +150,9 @@ class IsLoading {
         }
         if (this._options.type === 'full-overlay') {
             let overlay = document.getElementById(this._fullOverlayId);
-            document.querySelector('body').removeChild(overlay);
+            if (overlay) {
+                document.querySelector('body').removeChild(overlay);
+            }
         }
         if (this._target && this._target.getAttribute('data-is-loading-position')) {
             this._target.classList.remove('is-loading-element-overlay-target');

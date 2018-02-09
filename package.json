@@ -1,6 +1,6 @@
 {
   "name": "is-loading",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Small helper to give the user a visual feedback that something is happening ",
   "main": "cjs/index.js",
   "browser": "dist/isLoading.js",
